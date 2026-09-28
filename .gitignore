@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# 抓取产物（脚本默认 -o . ，直接在仓库内运行会落在这里）
+covers/
+notes/
+profile.json
+notes_list.json
+meta.json
+desc.md
+*.jpg
+*.jpeg
+*.png
+*.webp
+
+# 保存的页面与凭据，任何情况下都不该进仓库
+*.html
+cookies.txt
+cookies*.json
+.env
+
+# 工作目录（按账号名建的拆解输出）
+xhs_*/
+work/
+out/
+output/

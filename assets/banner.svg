@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-label="小红书账号拆解">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#fff5f6"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF2442"/>
+      <stop offset="1" stop-color="#ff6b81"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1200" height="360" fill="url(#bg)"/>
+  <!-- 顶部细红条 -->
+  <rect width="1200" height="6" fill="url(#accent)"/>
+
+  <!-- 左上角标签 -->
+  <g transform="translate(64,58)">
+    <rect width="150" height="30" rx="15" fill="#FF2442"/>
+    <text x="75" y="20" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1" fill="#ffffff">AI AGENT SKILL</text>
+  </g>
+
+  <!-- 主标题 -->
+  <text x="64" y="160" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Arial, sans-serif" font-size="60" font-weight="700" fill="#1a1a1a">
+    <tspan>小红书账号</tspan><tspan fill="#FF2442">拆解</tspan>
+  </text>
+
+  <!-- 副标题 -->
+  <text x="66" y="212" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Arial, sans-serif" font-size="24" fill="#555555">输入一个小红书链接，产出六问式《账号拆解报告》</text>
+
+  <!-- 底部特性行 -->
+  <text x="66" y="272" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Arial, sans-serif" font-size="17" fill="#999999">匿名抓取 · 零依赖 · 不绑定任何 Agent · macOS / Linux</text>
+
+  <!-- 右侧装饰：放大镜 + 六问 -->
+  <g transform="translate(852,72)">
+    <!-- 六问卡片 -->
+    <rect x="0" y="0" width="270" height="216" rx="20" fill="#ffffff" stroke="#ffe1e6" stroke-width="2"/>
+    <!-- 红色主块 -->
+    <rect x="20" y="20" width="230" height="118" rx="14" fill="url(#accent)"/>
+    <text x="135" y="92" text-anchor="middle" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Arial, sans-serif" font-size="52" font-weight="700" fill="#ffffff">6 问</text>
+    <!-- 六问标签行 -->
+    <g font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Arial, sans-serif" font-size="15" fill="#333333">
+      <circle cx="36" cy="164" r="4" fill="#FF2442"/>
+      <text x="48" y="169">赚谁的钱</text>
+      <circle cx="140" cy="164" r="4" fill="#ff9aab"/>
+      <text x="152" y="169">靠什么赚钱</text>
+    </g>
+    <g font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Arial, sans-serif" font-size="15" fill="#333333">
+      <circle cx="36" cy="194" r="4" fill="#ff9aab"/>
+      <text x="48" y="199">怎么被看见</text>
+      <circle cx="140" cy="194" r="4" fill="#ff9aab"/>
+      <text x="152" y="199">怎么下单</text>
+    </g>
+    <!-- 放大镜 -->
+    <circle cx="240" cy="40" r="16" fill="none" stroke="#ffffff" stroke-width="3.5"/>
+    <line x1="252" y1="52" x2="262" y2="62" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>
