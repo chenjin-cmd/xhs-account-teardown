@@ -23,9 +23,9 @@
 > [!NOTE]
 > **An AI agent skill in standard `SKILL.md` format.** Feed it a Xiaohongshu profile link and it anonymously scrapes the profile and note list, downloads covers, reads the images, and produces a structured *Account Teardown Report* following a six-question framework.
 >
-> **Not tied to any vendor** — any agent that can read `SKILL.md`, run a shell, and recognize images works. Or skip the agent entirely and run the two scripts yourself.
+> **Not tied to any vendor** — any agent that can read `SKILL.md`, run a shell, recognize images, and generate images works. Or skip the agent entirely and run the two scripts yourself.
 >
-> No login, no cookies, no backend. Depends only on `python3` and `curl`.
+> No login, no cookies, no backend. The scraping scripts depend only on `python3` and `curl`; the complete Agent workflow also needs image-generation and image-inspection capabilities for its default report visual.
 
 ---
 
@@ -37,6 +37,7 @@
 | 🖼️ **Cover-image teardown** | Read each cover to extract the series issue number, screenshot fields, category, price, sales, hook line, punchline |
 | 📖 **Deep teardown** (optional) | With a user-supplied `xsec_token` note link, transcribe the full note page by page |
 | 📐 **Six-question report** | Produce a structured report following `references/teardown-framework.md` |
+| 🧾 **Account-tone long image** | By default, turn the report into one shareable 9:16 image using an abstracted visual language from the account's covers |
 
 ## Host capability requirements
 
@@ -47,8 +48,9 @@ Check this table to see if your tool qualifies:
 | Run shell commands | Run the two scraping scripts (which call `curl`) | Use as a methodology framework only; teardown manually per `references/teardown-framework.md` |
 | Read local images (vision) | Recognize screenshot fields, body text, and punchlines on covers and note pages | Only get the `profile.json`/`notes_list.json` data skeleton; mark image reads as "not obtained" |
 | Write files | Save the report and scraped images / JSON | Output the report body directly in conversation instead |
+| Generate and inspect local images | Generate and verify `账号拆解长图.png` by default | Still deliver the Markdown report, clearly state that the long image was not generated, and never substitute text or a blank file for an image |
 
-All three are required for a complete report.
+All four are required for a complete report and its default long image.
 
 ---
 
@@ -106,9 +108,10 @@ flowchart LR
   B --> C["🖼️ read covers"]
   C --> D["📖 deep teardown<br/>(optional)"]
   D --> E["📐 six-question report"]
-  E --> F["📦 deliver"]
+  E --> F["🧾 generate 9:16 visual"]
+  F --> G["📦 deliver report + visual"]
   classDef r fill:#fff5f6,stroke:#FF2442,stroke-width:2px,color:#1a1a1a;
-  class A,B,C,D,E,F r;
+  class A,B,C,D,E,F,G r;
 ```
 
 1. **Parse the link** — extract `user_id` and `xsec_token`
@@ -116,7 +119,16 @@ flowchart LR
 3. **Read covers** — use vision to read each cover and record: series issue number, screenshot fields (nickname/rating/sold/followers/update cadence/after-sales tags), category, price, showcase sales, hook line, punchline
 4. **Deep teardown (optional)** — run `fetch_note.py` on user-supplied token links, transcribe body text and screenshot fields page by page
 5. **Write the report** — follow the six questions in `references/teardown-framework.md` + `templates/report-template.md`
-6. **Deliver** — report + cover directory + data-gap notes
+6. **Visualize the report (default)** — extract the account's category, primary colors, contrast, materials, layout language, mood, and abstract visual elements from covers; generate one 9:16 `<workdir>/账号拆解长图.png`
+7. **Verify and deliver** — check the visual's ratio, readable text, factual consistency, data boundaries, and tone match; make one targeted revision if needed. Deliver report + visual + cover directory + data-gap notes
+
+### Default report visual
+
+Every teardown generates one shareable 9:16 long image by default. It condenses the account snapshot, target audience, business or content structure, copyable moves, biggest risk, and data scope into a mobile-readable hierarchy.
+
+This is not a fixed poster template. The Agent extracts an **abstract** visual brief from the account's covers—category, colors, contrast, material, layout, and mood—and generates the visual only from verified report data and conclusions. It must not copy the account avatar, people, logos, cover artwork, or other copyrighted concrete assets; unavailable data must remain marked as "not obtained".
+
+After generation, the Agent must inspect the 9:16 ratio, text readability, factual consistency with the report, absence of invented data, and tone match. If a check fails, it makes one targeted revision. If the host lacks image generation or generation fails, it still delivers the Markdown report and clearly states that `账号拆解长图.png` was not generated and why.
 
 ---
 
